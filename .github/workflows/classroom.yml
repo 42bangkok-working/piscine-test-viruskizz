@@ -21,21 +21,25 @@ jobs:
         with:
           node-version: 18
 
-      # 3. Install dependencies (student project, if any)
-      - name: Install dependencies
-        run: npm install || true
-
       # 4. Checkout private tester repo
       - name: Checkout test suite
         uses: actions/checkout@v3
         with:
           repository: 42bangkok-working/javascript-piscine-tester   # change to your org/repo
-          path: tests
+          path: tester
           token: ${{ secrets.CLASSROOM_TESTS_TOKEN }}
 
-      # 5. Run Jest tests from tester repo
+      - name: setup files
+        run: |
+          cp -r tester/. ./
+          tree .
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
       - name: Run Jest tests
-        run: npx jest tests/subject1 --json --outputFile=result.json
+        run: npx jest
 
       # 6. Autograding action
       - name: Autograding
