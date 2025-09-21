@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "File exists",
+      "setup": "npm install",
+      "run": "test -f cell00/ex00/index.js",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 5,
+      "points": 5
+    },
+    {
+      "name": "sayHello returns Hello World",
+      "setup": "npm install",
+      "run": "npm test -- -t 'sayHello returns Hello World'",
+      "input": "",
+      "output": "Hello World",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 8
+    }
+  ]
+}

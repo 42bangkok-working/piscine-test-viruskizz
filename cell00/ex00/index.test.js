@@ -4,12 +4,12 @@ const path = require('path');
 const filePath = path.join(__dirname, './index.js');
 
 describe("cell00-ex00", () => {
-  test("file index.js exists", () => {
+  test("cell00-ex00 file index.js exists", () => {
     
     const exists = fs.existsSync(filePath);
     expect(exists).toBe(true);
   });
-  test("prints Hello World", () => {
+  test("cell00-ex00 prints Hello World", () => {
     const output = execSync(`node ${filePath}`).toString().trim();
     expect(output).toBe("Hello World");
   });
