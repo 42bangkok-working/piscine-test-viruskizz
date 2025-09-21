@@ -35,7 +35,7 @@ jobs:
           tree .
           mkdir -p .github/classrooms
           cp -r tester/* .github/
-          cp -r tester/__tests__/* __tests__/
+          cp -r tester/cell00/**/*.test.js ./cell00/
           cp tester/package.json .
           tree .
 
@@ -45,6 +45,7 @@ jobs:
 
       - name: Run Jest tests
         run: npx jest
+        continue-on-error: true
 
       # 6. Autograding action
       - name: Autograding
