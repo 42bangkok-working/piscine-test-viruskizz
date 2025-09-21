@@ -1,0 +1,42 @@
+name: Autograding
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  autograde:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout student repo
+      - name: Checkout student submission
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Install dependencies (student project, if any)
+      - name: Install dependencies
+        run: npm install || true
+
+      # 4. Checkout private tester repo
+      - name: Checkout test suite
+        uses: actions/checkout@v3
+        with:
+          repository: 42bangkok-working/javascript-piscine-tester   # change to your org/repo
+          path: tests
+          token: ${{ secrets.CLASSROOM_TESTS_TOKEN }}
+
+      # 5. Run Jest tests from tester repo
+      - name: Run Jest tests
+        run: npx jest tests/subject1 --json --outputFile=result.json
+
+      # 6. Autograding action
+      - name: Autograding
+        uses: education/autograding@v1
