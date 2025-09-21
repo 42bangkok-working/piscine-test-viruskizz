@@ -31,12 +31,12 @@ jobs:
 
       - name: setup files
         run: |
-          echo "Files in tester repo"
+          echo "=== Setup files ==="
           tree .
-          mkdir -p .github/classrooms
-          cp -r tester/* .github/
+          cp -r tester/.github/* .github/
           cp -r tester/cell00/**/*.test.js ./cell00/
           cp tester/package.json .
+          echo "=== Finish Setup files ==="
           tree .
 
       # 3. Install dependencies
