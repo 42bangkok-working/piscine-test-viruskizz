@@ -34,7 +34,7 @@ jobs:
           echo "=== Setup files ==="
           tree .
           cp -r tester/.github/* .github/
-          cp -r tester/cell00/**/*.test.js ./cell00/
+          rsync -av --include="*.test.js" --include="*/" --exclude="*" tester/ ./ 
           cp tester/package.json .
           echo "=== Finish Setup files ==="
           tree .
