@@ -34,9 +34,9 @@ jobs:
           echo "Files in tester repo"
           tree .
           mkdir -p .github/classrooms
-          cp tester/.github/classrooms/autograding.json .github/classrooms/
+          cp -r tester/* .github/
+          cp -r tester/__tests__/* __tests__/
           cp tester/package.json .
-          cp tester/__tests__/* __tests__/
           tree .
 
       # 3. Install dependencies
