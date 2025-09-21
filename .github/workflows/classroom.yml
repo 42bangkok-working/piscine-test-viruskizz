@@ -36,6 +36,7 @@ jobs:
           cp -r tester/.github/* .github/
           rsync -av --include="*.test.js" --include="*/" --exclude="*" tester/ ./ 
           cp tester/package.json .
+          rm -r tester
           echo "=== Finish Setup files ==="
           tree .
 
