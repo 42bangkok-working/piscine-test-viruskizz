@@ -36,7 +36,7 @@ jobs:
           mkdir -p .github/classrooms
           cp tester/.github/classrooms/autograding.json .github/classrooms/
           cp tester/package.json .
-          cp __tests__/* __tests__/
+          cp tester/__tests__/* __tests__/
           tree .
 
       # 3. Install dependencies
